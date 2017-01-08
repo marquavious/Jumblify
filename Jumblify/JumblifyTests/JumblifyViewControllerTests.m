@@ -2,13 +2,13 @@
 //  JumblifyViewControllerTests.m
 //  Jumblify
 //
-//  Created by Andy Obusek on 10/13/14.
-//  Copyright (c) 2014 Tuts+. All rights reserved.
+//  Created by Marquavious on 1/7/17.
+//  Copyright © 2017 Tuts+. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "JumblifyViewController.h"
+
 
 @interface JumblifyViewControllerTests : XCTestCase
 
@@ -25,15 +25,10 @@
 
 @implementation JumblifyViewControllerTests
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
-    self.vcToTest = [[JumblifyViewController alloc] init];
-}
-
-- (void)tearDown
-{
-    [super tearDown];
+    self.vcToTest = [[JumblifyViewController alloc]init];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)testReverseString
@@ -44,22 +39,25 @@
     XCTAssertEqualObjects(expectedReversedString, reversedString, @"The reversed string did not match the expected reverse");
 }
 
-- (void)testPerformanceReverseString
-{
+- (void)testPerformanceReverseString {
     NSString *originalString = @"himynameisandy";
     [self measureBlock:^{
         [self.vcToTest reverseString:originalString];
     }];
 }
 
-- (void)testDoSomethingThatTakesSomeTime
-{
+- (void)testDoSomethingThatTakesSomeTime {
     XCTestExpectation *completionExpectation = [self expectationWithDescription:@"Long method"];
     [self.vcToTest doSomethingThatTakesSomeTimesWithCompletionBlock:^(NSString *result) {
         XCTAssertEqualObjects(@"result", result, @"Result was not correct!");
         [completionExpectation fulfill];
     }];
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
 }
 
 @end
